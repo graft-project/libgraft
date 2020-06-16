@@ -7,7 +7,6 @@ android {
     INCLUDEPATH += $$PWD/include/external/android 
     LIBS += -L$$PWD/lib/graft/android/$$ANDROID_TARGET_ARCH \
 	    -lwallet_merged \
-	    -lutils \
 	    -lcncrypto \
 	    -lepee \
 	    -leasylogging \
@@ -30,9 +29,8 @@ android {
     
 } else {
     linux {
-        # XXX: order matters (epee first), wont link otherwise (undefined reference to easylogging)
 	LIBS += -L$$PWD/lib/graft/linux 
-	LIBS += -lwallet_merged -leasylogging -lepee -lunbound -llmdb -lssl -lcrypto -lsodium
+	LIBS += -lwallet_merged -lutils -leasylogging -lepee -lunbound -llmdb -lssl -lcrypto -lsodium
 	LIBS += -lboost_filesystem \
             -lboost_program_options \
             -lboost_regex \
